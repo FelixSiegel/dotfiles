@@ -1,0 +1,3 @@
+- **[fastfetch](https://github.com/fastfetch-cli/fastfetch)**:
+    - Installation: `sudo dnf in fastfetch`
+    - Config: `.config/fastfetch/config.jsonc` (Also requires image as logo)
