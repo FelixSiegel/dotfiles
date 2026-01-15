@@ -53,3 +53,4 @@
     * Configure wallpapers in `~/.config/hypr/hyprpaper.conf` (see <https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/>)
     * Configuring cursor size and theme in `~/.config/hypr/hyprland.conf` under the `environment` section. E.g., `env = XCURSOR_SIZE,24` and `env = XCURSOR_THEME,Catppuccin-Mocha-Blue-Cursors` such as `env = HYPRCURSOR_THEME,Catppuccin-Mocha-Blue-Cursors` and `env = HYPRCURSOR_SIZE,24`
     * Autostart applications can be added in `~/.config/hypr/hyprland.conf` under the `Autostart` section using the `exec =` directive
+    * For papirus folder themes, see <https://github.com/catppuccin/papirus-folders>
