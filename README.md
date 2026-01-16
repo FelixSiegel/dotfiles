@@ -10,7 +10,7 @@
 
       ```bash
       sudo dnf copr enable sdegler/hyprland
-      sudo dnf in hyprland hyprpolkitagent hyprpaper hyprsunset hyprtoolkit hyprlauncher
+      sudo dnf in hyprland hyprpolkitagent hyprpaper hyprsunset hyprtoolkit hyprlauncher hyprlock
       ```
 
     * Fedora 42 and below use the following COPR instead: <https://copr.fedorainfracloud.org/coprs/solopasha/hyprland/>
@@ -51,5 +51,6 @@
     * Copy hyprland config files at `~/.config/hypr/` and ashell config at `~/.config/ashell/`
     * Configure monitors in `~/.config/hypr/hyprland.conf` under the `monitor` section (see <https://wiki.hypr.land/Configuring/Monitors/>)
     * Configure wallpapers in `~/.config/hypr/hyprpaper.conf` (see <https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/>)
+    * Configure lock screen in `~/.config/hypr/hyprlock.conf` (see <https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/>)
     * Configuring cursor size and theme in `~/.config/hypr/hyprland.conf` under the `environment` section. E.g., `env = XCURSOR_SIZE,24` and `env = XCURSOR_THEME,Catppuccin-Mocha-Blue-Cursors` such as `env = HYPRCURSOR_THEME,Catppuccin-Mocha-Blue-Cursors` and `env = HYPRCURSOR_SIZE,24`
     * Autostart applications can be added in `~/.config/hypr/hyprland.conf` under the `Autostart` section using the `exec =` directive
