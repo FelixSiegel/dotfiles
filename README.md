@@ -1,5 +1,9 @@
+# My (catppuccin themed) desktop setup
 
-# Setup
+## Setup
+
+> [!NOTE]
+> If you search for cool looking catppuccin wallpapers, check out <https://github.com/orangci/walls-catppuccin-mocha>.
 
 * **[fastfetch](https://github.com/fastfetch-cli/fastfetch)**:
   * Installation: `sudo dnf in fastfetch`
@@ -81,3 +85,7 @@
   * Installation: `sudo dnf in zathura zathura-pdf-mupdf zathura-djvu`
   * Config: `.config/zathura`
     * Theme matches Catppuccin Mocha, see <https://github.com/catppuccin/zathura> (Make sure to set `set recolor-keephue true` to keep the colors accurate)
+
+## Disclaimer
+
+This setup is tailored to my personal preferences and workflow. Feel free to adapt and modify it to suit your own needs and tastes! The images in the image folder are not from me, credits to respective owners. If you own any of the images and want them removed, please contact me and I will remove them.
