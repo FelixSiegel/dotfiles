@@ -1,0 +1,4 @@
+include catppuccin-mocha
+set recolor-keephue true
+set adjust-open "best-fit"
+set smooth-scroll "true"

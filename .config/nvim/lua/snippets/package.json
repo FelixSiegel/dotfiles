@@ -1,0 +1,11 @@
+{
+  "name": "Ice-Snippet-Set",
+  "contributes": {
+    "snippets": [
+      {
+        "language": ["plaintex", "tex"],
+        "path": "./latex/tex.json"
+      }
+    ]
+  }
+}
