@@ -8,4 +8,3 @@ end, { desc = "[F]ormat [F]ile" })
 
 -- Open a terminal in a horizontal split
 vim.keymap.set("n", "<leader>tt", "<cmd>split | terminal<CR>", { desc = "Open terminal (split)" })
-

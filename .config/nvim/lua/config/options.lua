@@ -48,7 +48,11 @@ vim.opt.listchars = { tab = "→ ", trail = "·", nbsp = "␣" }
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
 
+-- Folding settings using treesitter
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 vim.opt.foldlevel = 20
+
+-- Line length indicator
+vim.opt.colorcolumn = "120"

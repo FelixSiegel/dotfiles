@@ -69,6 +69,7 @@
     * [fzf-lua](https://github.com/ibhagwan/fzf-lua): Fuzzy finder
       * Requires `fzf`, `fd` and `rg` installed: `sudo dnf in fzf fd-find ripgrep`
     * [indent-o-matic](https://github.com/Darazaki/indent-o-matic): Automatic indentation detection
+    * [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim): Indentation lines
     * [mason.nvim](https://github.com/mason-org/mason.nvim): LSP/DAP/Formatter installer
     * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim): Statusline
     * [luasnip](https://github.com/L3MON4D3/LuaSnip): Snippet engine

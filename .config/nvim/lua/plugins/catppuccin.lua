@@ -9,6 +9,12 @@ return {
                 light = "latte",
                 dark = "mocha",
             },
+            custom_highlights = function(colors)
+                return {
+                    -- Style indent-blankline scope with mauve
+                    IblScope = { fg = colors.mauve },
+                }
+            end,
         })
         -- Enable theme
         require("catppuccin").load()
