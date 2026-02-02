@@ -56,3 +56,6 @@ vim.opt.foldlevel = 20
 
 -- Line length indicator
 vim.opt.colorcolumn = "120"
+
+-- Copy to system clipboard
+vim.opt.clipboard = "unnamedplus"

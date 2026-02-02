@@ -74,6 +74,7 @@
     * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim): Statusline
     * [luasnip](https://github.com/L3MON4D3/LuaSnip): Snippet engine
       * Snippets inside `snippets/` folder (currently only for LaTeX)
+    * [nvim-autopairs](https://github.com/windwp/nvim-autopairs): Autopairs for brackets, quotes, etc.
     * [oil.nvim](https://github.com/stevearc/oil.nvim): File explorer
     * [presence.nvim](https://github.com/andweeb/presence.nvim): Discord Rich Presence integration
     * [rustaceanvim](https://github.com/mrcjkb/rustaceanvim): Rust development setup
