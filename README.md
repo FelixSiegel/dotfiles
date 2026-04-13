@@ -2,8 +2,9 @@
 
 > [!NOTE]
 > If you search for cool looking catppuccin wallpapers, check out the following repositories:
-> <https://github.com/orangci/walls-catppuccin-mocha>
-> <https://github.com/zhichaoh/catppuccin-wallpapers>
+>
+> - <https://github.com/orangci/walls-catppuccin-mocha>
+> - <https://github.com/zhichaoh/catppuccin-wallpapers>
 
 ## Setup
 
@@ -18,8 +19,7 @@
 <details>
 <summary><strong><a href="https://hypr.land/">hyprland (depraced)</a></strong></summary>
 
-> [!WARNING]
-> I have switched to niri as my main desktop environment, but I will keep this section here for reference and for anyone who wants to use Hyprland. Note that the config files in this repo are not updated anymore and may not work with the latest version of Hyprland. Please refer to the official Hyprland documentation for the latest configuration options and changes.
+**Warning:** I have switched to niri as my main desktop environment, but I will keep this section here for reference and for anyone who wants to use Hyprland. Note that the config files in this repo are not updated anymore and may not work with the latest version of Hyprland. Please refer to the official Hyprland documentation for the latest configuration options and changes.
 
 - Installation:
   - Fedora 43+: (see <https://blog.burkert.me/posts/fedora_43_hyprland/?utm_source=chatgpt.com>)
