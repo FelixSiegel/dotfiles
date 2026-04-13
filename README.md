@@ -1,9 +1,11 @@
 # My (catppuccin themed) desktop setup
 
-## Setup
-
 > [!NOTE]
-> If you search for cool looking catppuccin wallpapers, check out <https://github.com/orangci/walls-catppuccin-mocha>.
+> If you search for cool looking catppuccin wallpapers, check out the following repositories:
+> <https://github.com/orangci/walls-catppuccin-mocha>
+> <https://github.com/zhichaoh/catppuccin-wallpapers>
+
+## Setup
 
 <details>
 <summary><strong><a href="https://github.com/fastfetch-cli/fastfetch">fastfetch</a></strong></summary>
@@ -14,7 +16,10 @@
 </details>
 
 <details>
-<summary><strong><a href="https://hypr.land/">hyprland</a></strong></summary>
+<summary><strong><a href="https://hypr.land/">hyprland (depraced)</a></strong></summary>
+
+> [!WARNING]
+> I have switched to niri as my main desktop environment, but I will keep this section here for reference and for anyone who wants to use Hyprland. Note that the config files in this repo are not updated anymore and may not work with the latest version of Hyprland. Please refer to the official Hyprland documentation for the latest configuration options and changes.
 
 - Installation:
   - Fedora 43+: (see <https://blog.burkert.me/posts/fedora_43_hyprland/?utm_source=chatgpt.com>)
@@ -56,8 +61,6 @@
       sudo cp target/release/ashell /usr/local/bin/ashell # Remove later when available in repos
       ```
 
-  - [`Catppuccin-Custom-Cursors`](https://github.com/catppuccin/cursors):
-    - Installation see instructions in the repo.
 - Config:
   - Copy hyprland config files at `~/.config/hypr/` and ashell config at `~/.config/ashell/`
   - Configure monitors in `~/.config/hypr/hyprland.conf` under the `monitor` section (see <https://wiki.hypr.land/Configuring/Monitors/>)
@@ -82,6 +85,16 @@
   - Main config: `.config/niri/config.kdl`
   - Update monitor settings in the `output` section for your display.
   - Adjust autostarted applications under `spawn-at-startup` to match your system.
+
+</details>
+
+<details>
+<summary><strong><a href="https://github.com/catppuccin/cursors">Catppuccin cursors</a></strong></summary>
+
+- Installation: see instructions in the upstream repo.
+- Usage:
+  - Works with multiple desktop environments/compositors (for example Niri, Hyprland, KDE).
+  - In this repo, cursor theme usage is configured in Niri at `.config/niri/config.kdl` and in Hyprland at `.config/hypr/hyprland.conf` (see above for details).
 
 </details>
 
