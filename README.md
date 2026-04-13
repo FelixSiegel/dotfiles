@@ -88,9 +88,13 @@
   * Config: `.config/zathura`
     * Theme matches Catppuccin Mocha, see <https://github.com/catppuccin/zathura> (Make sure to set `set recolor-keephue true` to keep the colors accurate)
 * [kitty](https://sw.kovidgoyal.net/kitty/)
-  * `sudo dnf in kitty`
+  * Installation: `sudo dnf in kitty`
   * Config: `.config/kitty`
     * Theme is copied from [catppuccin kitty Github repository](https://github.com/catppuccin/kitty)
+* [fuzzel](https://codeberg.org/dnkl/fuzzel)
+  * Installation: `sudo dnf in fuzzel`
+  * Config: `.config/fuzzel`
+    * Theme is copied from [catppuccin fuzzel Github repository](https://github.com/catppuccin/fuzzel)
 
 ## Disclaimer
 
