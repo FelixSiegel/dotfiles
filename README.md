@@ -58,6 +58,18 @@
     * Configuring cursor size and theme in `~/.config/hypr/hyprland.conf` under the `environment` section. E.g., `env = XCURSOR_SIZE,24` and `env = XCURSOR_THEME,Catppuccin-Mocha-Blue-Cursors` such as `env = HYPRCURSOR_THEME,Catppuccin-Mocha-Blue-Cursors` and `env = HYPRCURSOR_SIZE,24`
     * Autostart applications can be added in `~/.config/hypr/hyprland.conf` under the `Autostart` section using the `exec =` directive
     * For papirus folder themes, see <https://github.com/catppuccin/papirus-folders>
+* **[niri](https://github.com/YaLTeR/niri)**:
+  * Installation: `sudo dnf in niri`
+  * Dependencies used in this setup:
+    * `waybar` (status bar)
+    * `swaybg` (wallpaper)
+    * `fuzzel` (application launcher)
+    * `nm-applet` (network tray)
+    * `gnome-keyring` (for password management)
+  * Config:
+    * Main config: `.config/niri/config.kdl`
+    * Update monitor settings in the `output` section for your display.
+    * Adjust autostarted applications under `spawn-at-startup` to match your system.
 * **[neovim](https://neovim.io/)**:
   * Installation: `sudo dnf in nvim`
   * Config: `.config/nvim/`
