@@ -22,7 +22,7 @@
 **Warning:** I have switched to niri as my main desktop environment, but I will keep this section here for reference and for anyone who wants to use Hyprland. Note that the config files in this repo are not updated anymore and may not work with the latest version of Hyprland. Please refer to the official Hyprland documentation for the latest configuration options and changes.
 
 - Installation:
-  - Fedora 43+: (see <https://blog.burkert.me/posts/fedora_43_hyprland/?utm_source=chatgpt.com>)
+  - Fedora 43+: (see <https://blog.burkert.me/posts/fedora_43_hyprland/>)
 
     ```bash
     sudo dnf copr enable sdegler/hyprland
