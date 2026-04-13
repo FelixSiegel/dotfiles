@@ -1,6 +1,8 @@
 local vim = vim
 -- See: https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 
+-- vim.lsp.set_log_level(vim.log.levels.WARN)
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -50,9 +52,11 @@ vim.opt.mouse = "a"
 
 -- Folding settings using treesitter
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 vim.opt.foldenable = false
 vim.opt.foldlevel = 20
+vim.opt.foldlevelstart = 2
 
 -- Line length indicator
 vim.opt.colorcolumn = "120"

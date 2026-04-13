@@ -2,7 +2,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-        local configs = require("nvim-treesitter.config")
+        local configs = require("nvim-treesitter.configs")
 
         configs.setup({
             ensure_installed = {
@@ -25,6 +25,7 @@ return {
                 disable = { "latex" }, -- Disable tree sitter  for LaTeX as VimTeX is doing this part
             },
             indent = { enable = true },
+            fold = { enable = true },
 
             incremental_selection = {
                 enable = true,

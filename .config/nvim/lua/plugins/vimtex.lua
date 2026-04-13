@@ -11,7 +11,7 @@ return {
         vim.g.vimtex_mappings_prefix = "<leader>l"
 
         -- Set conceallevel (2 = conceal text unless it's on the current line)
-        -- vim.opt.conceallevel = 1
-        -- vim.opt.concealcursor = "" -- Show conceal on cursor line in all modes
+        vim.opt.conceallevel = 0
+        vim.opt.concealcursor = "" -- Show conceal on cursor line in all modes
     end,
 }
