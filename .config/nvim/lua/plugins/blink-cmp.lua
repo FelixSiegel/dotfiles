@@ -6,12 +6,7 @@ return {
         -- "rafamadriz/friendly-snippets"
     },
 
-    -- use a release tag to download pre-built binaries
     version = "1.*",
-    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -28,7 +23,12 @@ return {
         -- C-k: Toggle signature help (if signature.enabled = true)
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        keymap = { preset = "super-tab" },
+        keymap = {
+            preset = "super-tab",
+            -- Prioritize snippet jumping over completion selection
+            ["<Tab>"] = { "snippet_forward", "accept", "fallback" },
+            ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        },
 
         appearance = {
             -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -36,15 +36,29 @@ return {
             nerd_font_variant = "mono",
         },
 
-        snippets = { preset = 'luasnip' },
+        snippets = { preset = "luasnip" },
 
         -- (Default) Only show the documentation popup when manually triggered
-        completion = { documentation = { auto_show = false } },
+        completion = { documentation = { auto_show = false }, ghost_text = { enabled = true } },
 
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },
+
+            providers = {
+                snippets = {
+                    score_offset = 100, -- Massively boost snippet priority
+                },
+                lsp = {
+                    score_offset = 0, -- Keep LSP normal
+                    min_keyword_length = 2, -- Prevent LSP from popping up on a single character
+                },
+                buffer = {
+                    score_offset = -3, -- Push buffer completions to the bottom of the list
+                    min_keyword_length = 3, -- Only suggest standard text words after 3 characters
+                },
+            },
         },
 
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

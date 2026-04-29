@@ -17,6 +17,80 @@ local function in_mathzone()
     return vim.fn["vimtex#syntax#in_mathzone"]() == 1
 end
 
+-- list of math keywords for autocompletion without leading backslash
+local math_symbols = {
+    "alpha",
+    "beta",
+    "gamma",
+    "delta",
+    "epsilon",
+    "varepsilon",
+    "zeta",
+    "eta",
+    "theta",
+    "lambda",
+    "mu",
+    "pi",
+    "phi",
+    "varphi",
+    "infty",
+    "approx",
+    "equiv",
+    "neq",
+    "leq",
+    "geq",
+    "cdot",
+    "nabla",
+    "forall",
+    "exists",
+    "in",
+    "notin",
+    "subset",
+    "subseteq",
+    "supset",
+    "supseteq",
+    "setminus",
+}
+
+local regular_snippets = {}
+
+-- Dynamically generate a snippet for each symbol
+for _, sym in ipairs(math_symbols) do
+    table.insert(
+        regular_snippets,
+        s({
+            trig = sym,
+            condition = in_mathzone, -- Prevents expansion if forced
+
+            -- show_condition dictates visibility in the blink.cmp menu
+            show_condition = function()
+                -- Hide if not in a math environment
+                if not in_mathzone() then
+                    return false
+                end
+                return true
+            end,
+        }, {
+            f(function()
+                -- Get the cursor column position (0-indexed byte offset)
+                local col = vim.api.nvim_win_get_cursor(0)[2]
+                local line = vim.api.nvim_get_current_line()
+
+                -- Get the character exactly before the cursor
+                local char_before = line:sub(col, col)
+
+                if char_before == "\\" then
+                    -- If user already typed '\', just return the word
+                    return sym
+                else
+                    -- If user just typed the word, inject the '\'
+                    return "\\" .. sym
+                end
+            end, {}),
+        })
+    )
+end
+
 -- Auto-expand subscripts: a_ij -> a_{ij}
 local auto_subscript = s(
     {
@@ -124,92 +198,119 @@ local function generate_matrix(_, snip)
 end
 
 -- Return: first table is regular snippets, second is autosnippets
-return {}, {
-    auto_subscript,
-    auto_superscript,
-    auto_negative_superscript,
-    auto_negative_subscript,
-    auto_frac,
-    s({ trig = "(%d)(%d)mat", regTrig = true, snippetType = "autosnippet", condition = in_mathzone }, {
-        t("\\begin{pmatrix}"),
-        t({ "", "\t" }),
-        d(1, generate_matrix),
-        t({ "", "\\end{pmatrix}" }),
-        i(0),
-    }),
-    s({ trig = "vabs", wordTrig = false, snippetType = "autosnippet", condition = in_mathzone }, {
-        t("\\lvert "),
-        i(1),
-        t(" \\rvert"),
-    }),
-    s({ trig = "scal", wordTrig = false, snippetType = "autosnippet", condition = in_mathzone }, {
-        t("\\langle "),
-        i(1),
-        t(", "),
-        i(2),
-        t(" \\rangle"),
-    }),
-    s({ trig = "def", snippetType = "autosnippet", condition = line_begin }, fmt(
-        [[
+return regular_snippets,
+    {
+        auto_subscript,
+        auto_superscript,
+        auto_negative_superscript,
+        auto_negative_subscript,
+        auto_frac,
+        -- Inline Math
+        s({ trig = "mm", snippetType = "autosnippet" }, {
+            t("\\( "),
+            i(1),
+            t(" \\)"),
+            i(0),
+        }),
+
+        -- Display Math
+        s(
+            { trig = "md", snippetType = "autosnippet" },
+            fmt(
+                [[
+\[
+    <>
+\]
+<>
+    ]],
+                { i(1), i(0) },
+                { delimiters = "<>" }
+            )
+        ),
+        s({ trig = "(%d)(%d)mat", regTrig = true, snippetType = "autosnippet", condition = in_mathzone }, {
+            t("\\begin{pmatrix}"),
+            t({ "", "\t" }),
+            d(1, generate_matrix),
+            t({ "", "\\end{pmatrix}" }),
+            i(0),
+        }),
+        s({ trig = "scal", wordTrig = false, snippetType = "autosnippet", condition = in_mathzone }, {
+            t("\\langle "),
+            i(1),
+            t(", "),
+            i(2),
+            t(" \\rangle"),
+        }),
+        s(
+            { trig = "def", snippetType = "autosnippet", condition = line_begin },
+            fmt(
+                [[
 \begin{definition}{<>}{<>}
     <>
 \end{definition}
         ]],
-        { i(1, "Titel"), i(2, "label"), i(0) },
-        { delimiters = "<>" }
-    )),
-    s({ trig = "satz", snippetType = "autosnippet", condition = line_begin }, fmt(
-        [[
+                { i(1, "Titel"), i(2, "label"), i(0) },
+                { delimiters = "<>" }
+            )
+        ),
+        s(
+            { trig = "satz", snippetType = "autosnippet", condition = line_begin },
+            fmt(
+                [[
 \begin{satz}{<>}{<>}
     <>
 \end{satz}
         ]],
-        { i(1, "Titel"), i(2, "label"), i(0) },
-        { delimiters = "<>" }
-    )),
-    s({ trig = "prop", snippetType = "autosnippet", condition = line_begin }, fmt(
-        [[
+                { i(1, "Titel"), i(2, "label"), i(0) },
+                { delimiters = "<>" }
+            )
+        ),
+        s(
+            { trig = "prop", snippetType = "autosnippet", condition = line_begin },
+            fmt(
+                [[
 \begin{proposition}{<>}{<>}
     <>
 \end{proposition}
         ]],
-        { i(1, "Titel"), i(2, "label"), i(0) },
-        { delimiters = "<>" }
-    )),
-    s({ trig = "folg", snippetType = "autosnippet", condition = line_begin }, fmt(
-        [[
+                { i(1, "Titel"), i(2, "label"), i(0) },
+                { delimiters = "<>" }
+            )
+        ),
+        s(
+            { trig = "folg", snippetType = "autosnippet", condition = line_begin },
+            fmt(
+                [[
 \begin{fol}{<>}{<>}
     <>
 \end{folgerung}
         ]],
-        { i(1, "Titel"), i(2, "label"), i(0) },
-        { delimiters = "<>" }
-    )),
-    s({ trig = "bsp", snippetType = "autosnippet", condition = line_begin }, fmt(
-        [[
+                { i(1, "Titel"), i(2, "label"), i(0) },
+                { delimiters = "<>" }
+            )
+        ),
+        s(
+            { trig = "bsp", snippetType = "autosnippet", condition = line_begin },
+            fmt(
+                [[
 \begin{beispiel}{<>}{}
     <>
 \end{beispiel}
         ]],
-        { i(1, ""), i(0) },
-        { delimiters = "<>" }
-    )),
-    s({ trig = "bem", snippetType = "autosnippet", condition = line_begin }, fmt(
-        [[
+                { i(1, ""), i(0) },
+                { delimiters = "<>" }
+            )
+        ),
+        s(
+            { trig = "bem", snippetType = "autosnippet", condition = line_begin },
+            fmt(
+                [[
 \begin{bemerkung}{<>}{}
     <>
 \end{bemerkung}
         ]],
-        { i(1, ""), i(0) },
-        { delimiters = "<>" }
-    )),
-    s({ trig = "beg", snippetType = "autosnippet", condition = line_begin }, fmt(
-        [[
-\begin{<>}
-    <>
-\end{<>}
-        ]],
-        { i(1, "env"), i(0), rep(1) },
-        { delimiters = "<>" }
-    )),
-}
+                { i(1, ""), i(0) },
+                { delimiters = "<>" }
+            )
+        ),
+    }
