@@ -118,7 +118,7 @@
     - Snippets inside `snippets/` folder (currently only for LaTeX)
   - [nvim-autopairs](https://github.com/windwp/nvim-autopairs): Autopairs for brackets, quotes, etc.
   - [oil.nvim](https://github.com/stevearc/oil.nvim): File explorer
-  - [presence.nvim](https://github.com/andweeb/presence.nvim): Discord Rich Presence integration
+  - [cord.nvim](https://github.com/vyfor/cord.nvim): Discord Rich Presence integration
   - [rustaceanvim](https://github.com/mrcjkb/rustaceanvim): Rust development setup
   - [vimtex](https://github.com/lervag/vimtex): LaTeX support
     - Requires `latexmk` and a LaTeX distribution installed (e.g., `texlive-scheme-full`). And also a PDF viewer like `zathura`: `sudo dnf in zathura` (lowkey best PDF viewer out there, see below for configuration)
