@@ -26,7 +26,7 @@ return {
         keymap = {
             preset = "super-tab",
             -- Prioritize snippet jumping over completion selection
-            ["<Tab>"] = { "snippet_forward", "accept", "fallback" },
+            ["<Tab>"] = { "accept", "snippet_forward", "fallback" },
             ["<S-Tab>"] = { "snippet_backward", "fallback" },
         },
 
@@ -39,7 +39,7 @@ return {
         snippets = { preset = "luasnip" },
 
         -- (Default) Only show the documentation popup when manually triggered
-        completion = { documentation = { auto_show = false }, ghost_text = { enabled = true } },
+        completion = { documentation = { auto_show = false }, ghost_text = { enabled = false } },
 
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
@@ -49,10 +49,11 @@ return {
             providers = {
                 snippets = {
                     score_offset = 100, -- Massively boost snippet priority
+                    min_keyword_length = 2,
                 },
                 lsp = {
                     score_offset = 0, -- Keep LSP normal
-                    min_keyword_length = 2, -- Prevent LSP from popping up on a single character
+                    min_keyword_length = 2,
                 },
                 buffer = {
                     score_offset = -3, -- Push buffer completions to the bottom of the list
